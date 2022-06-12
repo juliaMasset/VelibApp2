@@ -25,34 +25,22 @@ class FavoriteActivity : AppCompatActivity() {
             finish();
         }
 
+    var listView = findViewById<ListView>(R.id.listView)
+
+    val helper = DataBaseHandler(this)
+
+    val arrayList: ArrayList<Station> = helper.getInfo()
+
+
+
+    val listItems = arrayOfNulls<String>(arrayList.size)
+
+    for (i in arrayList.indices) {
+        val recipe = arrayList[i]
+        listItems[i] = recipe.toString()
     }
 
-   /* A FINIR : pour afficher tableau
-
-   val listView = findViewById<ListView>(R.id.listview)
-    listView.adapter = StationAdapter(this)
-
-    private class StationAdapter(context: Context) : BaseAdapter() {
-
-        private val mContext: Context
-
-        init {
-            mContext = context
-        }
-
-        override fun getCount(): Int {
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getItem(position: Int): Station {
-        }
-
-        override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
-
-        }
-
-    }*/
+    val adapter = FavoriteAdapter(this, arrayList)
+    listView.adapter = adapter
+}
 }

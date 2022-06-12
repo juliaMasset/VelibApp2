@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/add_fav.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/add_fav_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_favorite.xml" value="0.11865942028985507" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/station_list.xml" value="0.1" />
       </map>
     </option>
   </component>

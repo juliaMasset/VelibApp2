@@ -92,7 +92,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback{
 
             val close = findViewById<ImageView>(R.id.info_close)
 
-            val favoriteButton = findViewById<ImageView>(R.id.favorite_button)
+            val favoriteButton = findViewById<Button>(R.id.favorite_button)
 
             close.setOnClickListener {
                 infos.isVisible = false

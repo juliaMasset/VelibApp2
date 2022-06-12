@@ -5,18 +5,18 @@ import com.google.maps.android.clustering.ClusterItem
 
 
 data class Station(
-    val bikes_available: Int,
+    var bikes_available: Int,
     val capacity: Int,
-    val ebikes_available: Int,
+    var ebikes_available: Int,
     val last_reported: Int,
     val lat: Double,
     val lon: Double,
-    val name: String,
-    val num_docks_available: Int,
+    var name: String,
+    var num_docks_available: Int,
     val stationCode: String,
-    val station_id: Long,
+    var station_id: Long,
 
-): ClusterItem {
+    ): ClusterItem {
 
     override fun getPosition(): LatLng {
         return LatLng(lat, lon)

@@ -1,24 +1,12 @@
 package com.example.velibmapapp
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-
-val DATABASE_NAME = "dbStations"
-val TABLE_NAME = "Stations"
-val COL_BIKES = "bikes_available"
-val COL_CAPACITY = "capacity"
-val COL_eBiKES = "ebikes_available"
-val COL_LREPORTED = "last_reported"
-val COL_LAT = "lat"
-val COL_LON = "lon"
-val COL_NAME = "name"
-val COL_DOCKS = "num_docks_available"
-val COL_STATIONcode = "stationCode"
-val COL_ID = "station_id"
 
 class DataBaseHandler (var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,null,1){
     override fun onCreate(db: SQLiteDatabase?) {
@@ -52,13 +40,47 @@ class DataBaseHandler (var context: Context) : SQLiteOpenHelper(context, DATABAS
 
     }
 
-    fun getAll(): List<Station> {
+    // below method is to get
+    // all data from our database
+    @SuppressLint("Range")
+    fun getInfo(): ArrayList<Station> {
 
-        // A FINIR
-        val db = this.readableDatabase
-        val favoris = db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
-        favoris.
-        return
+        var list = ArrayList<Station>()
+        val readableDataBase = this.readableDatabase
+        val cursor = readableDataBase.rawQuery("select * from $TABLE_NAME", null)
+        cursor.moveToFirst()
+
+        while (!cursor.isAfterLast) {
+
+            var station = Station(0,0,0,0,0.0,0.0,"",0,"",0)
+            station.name = cursor.getString(cursor.getColumnIndex(COL_NAME))
+            station.bikes_available = cursor.getInt(cursor.getColumnIndex(COL_BIKES))
+            station.ebikes_available = cursor.getInt(cursor.getColumnIndex(COL_eBiKES))
+            station.num_docks_available = cursor.getInt(cursor.getColumnIndex(COL_DOCKS))
+
+            list.add(station)
+
+            cursor.moveToNext()
+        }
+
+        return list
+    }
+
+    companion object{
+        // here we have defined variables for our database
+
+        val DATABASE_NAME = "dbStations"
+        val TABLE_NAME = "Stations"
+        val COL_BIKES = "bikes_available"
+        val COL_CAPACITY = "capacity"
+        val COL_eBiKES = "ebikes_available"
+        val COL_LREPORTED = "last_reported"
+        val COL_LAT = "lat"
+        val COL_LON = "lon"
+        val COL_NAME = "name"
+        val COL_DOCKS = "num_docks_available"
+        val COL_STATIONcode = "stationCode"
+        val COL_ID = "station_id"
     }
 
 }
