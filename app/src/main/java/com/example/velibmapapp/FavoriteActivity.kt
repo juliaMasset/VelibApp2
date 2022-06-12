@@ -18,7 +18,7 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
-
+        supportActionBar?.title = "Favoris"
 
         val go_back = findViewById<ImageView>(R.id.go_back)
         go_back.setOnClickListener {

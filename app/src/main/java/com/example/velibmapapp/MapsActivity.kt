@@ -41,6 +41,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback{
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Vélib'"
+
+
         val buttonClick = findViewById<ImageView>(R.id.button_click)
         buttonClick.setOnClickListener {
             val intent = Intent(this, FavoriteActivity::class.java)
